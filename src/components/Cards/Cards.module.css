@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: auto;
+  background-color: #887675;
+  padding: 1em;
+  border-radius: 15px;
+}
