@@ -48,3 +48,7 @@ a:active {
   display: flex;
   align-self: self-end;
 }
+
+.container button{
+    margin-bottom: 3.5em;
+}

@@ -25,11 +25,11 @@ const Detail = () => {
   return (
     <div className={styles.container}>
 
-      <div className={styles.caja}>
+      <div >
         <img src={image} alt={name} />
       </div>
 
-      <div className={styles.caja1}>
+      <div >
         <h4 style={{ fontSize: "3em" }}>{name}</h4>
         <h4>STATUS | {status}</h4>
         <h4>GENDER | {gender}</h4>

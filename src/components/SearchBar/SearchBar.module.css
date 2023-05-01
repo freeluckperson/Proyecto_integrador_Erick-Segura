@@ -1,9 +1,5 @@
-/* .container {
-  display: flex;
-  margin: auto;
-  width: 20%;
-  margin-top: 20px;
-  margin-bottom: 5em;
+.container {
+background-color: white;
 }
 
 .container input {
@@ -12,8 +8,8 @@
 }
 
 .container button {
-  border-radius: 5px;
-  height: 36px;
-  background-color: brown;
-  color: white;
-} */
+  border-radius: 15%;
+  background-color: green;
+  height: 35px;
+  
+}
