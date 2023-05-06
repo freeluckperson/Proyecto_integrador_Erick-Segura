@@ -43,12 +43,15 @@ a:active {
   color: #fddb3a;
 }
 
-.container button {
-  background-color: rgb(62, 93, 139);
+
+
+.butonContainer {
+  width: 90%;
   display: flex;
-  align-self: self-end;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.container button{
-    margin-bottom: 3.5em;
+.butonContainer button{
+  background-color: cadetblue;
 }

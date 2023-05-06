@@ -1,6 +1,6 @@
 const validation = (data) => {
   const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  const regexPass = /("[0-9]")/;
+  const regexPass = /^(?=.*[0-9]).+$/;
 
   const errors = {};
 
