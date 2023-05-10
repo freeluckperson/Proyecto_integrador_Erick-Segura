@@ -6,8 +6,9 @@ import { connect } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions";
 
 const Card = ({ name, image, id, onClose, addFav, removeFav, myFavorites }) => {
+  
   const [isFav, setIsFav] = useState(false);
-
+  
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);

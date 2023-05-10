@@ -18,7 +18,6 @@ function Form(props) {
 
     setData({ ...data, [name]: value });
     setErrors(validation({ ...data, [name]: value }));
-    console.log(errors);
   };
 
   const handleSubmit = (e) => {
