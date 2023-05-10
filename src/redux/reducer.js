@@ -15,25 +15,27 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case REMOVE_FAV:
+      const fav = (fav) => fav.id !== payload;
       return {
         ...state,
-        myFavorites: state.myFavorites.filter(({ id }) => id !== payload),
+        myFavorites: state.myFavorites.filter(fav),
       };
+
     case FILTER:
+      const gender = ({ gender }) => gender === payload;
       return {
         ...state,
-        myFavorites: [
-          ...state.allCharactersFav,
-          state.allCharactersFav.filter(({ gender }) => gender === payload),
-        ],
+        myFavorites: state.allCharactersFav.filter(gender),
       };
+
     case ORDER:
+      const copy = [...state.allCharactersFav];
       return {
         ...state,
         myFavorites:
           payload === "A"
-            ? state.myFavorites.sort((a, b) => a.id - b.id)
-            : state.myFavorites.sort((a, b) => b.id - a.id),
+            ? copy.sort((a, b) => a.id - b.id)
+            : copy.sort((a, b) => b.id - a.id),
       };
     default:
       return { ...state };
