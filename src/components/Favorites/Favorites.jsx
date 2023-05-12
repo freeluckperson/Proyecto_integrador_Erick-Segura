@@ -3,14 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import { orderCards, filterCards } from "../../redux/actions";
 
-
-
 const Favorites = () => {
-  const [aux , setAux ] = useState(false);
+  const [aux, setAux] = useState(false);
   console.log(aux);
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.myFavorites);
-console.log(favorites);
+  
   const handleOrder = (e) => {
     dispatch(orderCards(e.target.value));
     setAux(true);
