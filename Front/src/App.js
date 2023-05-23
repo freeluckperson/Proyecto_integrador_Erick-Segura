@@ -10,6 +10,7 @@ import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
 
+
 function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
@@ -30,7 +31,7 @@ function App() {
   }, [access, navigate]);
 
   const onSearch = (id) => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
