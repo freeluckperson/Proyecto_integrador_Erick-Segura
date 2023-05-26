@@ -14,15 +14,15 @@ import Favorites from "./components/Favorites/Favorites";
 function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
-  const email = "e@s.com";
-  const password = "123456";
+  // const email = "e@s.com";
+  // const password = "123456";
   const navigate = useNavigate();
 
   const login = (data) => {
-    if (data.password === password && data.email === email) {
+    //if (data.password === password && data.email === email) {
       setAccess(true);
       navigate("/home");
-    }
+    //}
   };
 
   // App.js
@@ -31,7 +31,7 @@ function App() {
   }, [access, navigate]);
 
   const onSearch = (id) => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
+    axios(`http://localhost:3001/rickandmorty/onsearch/${id}`).then(
       ({ data }) => {
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
