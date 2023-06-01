@@ -24,17 +24,16 @@ const Detail = () => {
 
   return (
     <div className={styles.container}>
-
-      <div >
+      <div>
         <img src={image} alt={name} />
       </div>
 
-      <div >
+      <div>
         <h4 style={{ fontSize: "3em" }}>{name}</h4>
         <h4>STATUS | {status}</h4>
         <h4>GENDER | {gender}</h4>
         <h4>SPECIES | {species}</h4>
-        {origin && <h4>ORIGIN | {origin.name}</h4>}
+        <h4>ORIGIN | {origin}</h4>
       </div>
     </div>
   );
