@@ -1,16 +1,17 @@
+
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import { orderCards, filterCards } from "../../redux/actions";
 
 const Favorites = () => {
-  const [aux, setAux] = useState(false);
-  const dispatch = useDispatch();
   const favorites = useSelector((state) => state.myFavorites);
+  const dispatch = useDispatch();
+  const [aux, setAux] = useState(false);
 
   const handleOrder = (e) => {
     dispatch(orderCards(e.target.value));
-    setAux(true);
+    setAux(!aux);
   };
 
   const handleFilter = (e) => {
@@ -31,15 +32,21 @@ const Favorites = () => {
         <option value="unknown">unknown</option>
       </select>
 
-      {favorites.map(({ name, species, gender, image, id }) => (
-        <Card
-          image={image}
-          name={name}
-          species={species}
-          gender={gender}
-          id={id}
-        />
-      ))}
+      {favorites &&
+        favorites.map(
+          ({ name, species, gender, image, id, status, origin }) => (
+            <Card
+              key={id}
+              id={id}
+              name={name}
+              status={status}
+              species={species}
+              gender={gender}
+              origin={origin?.name}
+              image={image}
+            />
+          )
+        )}
     </div>
   );
 };
