@@ -7,16 +7,26 @@ const Detail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
 
-  useEffect(() => {
-    axios(`http://localhost:3001/rickandmorty/detail/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacter(data);
-        } else {
-          window.alert("No hay personajes con ese ID");
-        }
-      }
-    );
+  // useEffect(() => {
+  //   axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
+  //     ({ data }) => {
+  //       if (data.name) {
+  //         setCharacter(data);
+  //       } else {
+  //         window.alert("No hay personajes con ese ID");
+  //       }
+  //     }
+  //   );
+  //   return setCharacter({});
+  // }, [id]);
+
+  useEffect(()=> async () => {
+    const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+    try {
+      data ? setCharacter(data) : window.alert("No hay pj para ese id");
+    } catch (error) {
+      console.log(error);
+    }
     return setCharacter({});
   }, [id]);
 

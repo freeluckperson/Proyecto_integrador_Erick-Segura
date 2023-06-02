@@ -10,7 +10,6 @@ import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
 
-
 function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
@@ -20,8 +19,8 @@ function App() {
 
   const login = (data) => {
     //if (data.password === password && data.email === email) {
-      setAccess(true);
-      navigate("/home");
+    setAccess(true);
+    navigate("/home");
     //}
   };
 
@@ -30,16 +29,14 @@ function App() {
     !access && navigate("/");
   }, [access, navigate]);
 
-  const onSearch = (id) => {
-    axios(`http://localhost:3001/rickandmorty/onsearch/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        }
-      }
-    );
+  
+  const onSearch = async (id) => {
+    const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+    try {
+      data ? setCharacters(() => [...characters, data]) : window.alert("¡No hay personajes con este ID!");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onClose = (id) => {
@@ -53,10 +50,10 @@ function App() {
       {location.pathname !== "/" && <NavBar onSearch={onSearch} />}
       <Routes>
         <Route path="/" element={<Form login={login} />} />
-        <Route path="/home" element={<Cards characters={characters} onClose={onClose} />}/>
+        <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/favorites" element={<Favorites/>} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </div>
   );
