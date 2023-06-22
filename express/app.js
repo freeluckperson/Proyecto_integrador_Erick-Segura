@@ -2,8 +2,9 @@ const express = require("express");
 const server = express();
 const PORT = 3001;
 const router = require("./routes/index");
-const { sequelize } = require("./Db/DB_connection");
-const saveApiData = require("./controlers/saveApiData");
+const { conn } = require("./Db/DB_connection");
+
+//const saveApiData = require("./controlers/saveApiData");
 
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -20,7 +21,12 @@ server.use(express.json());
 server.use("/rickandmorty", router);
 
 server.listen(PORT, async () => {
-  await sequelize.sync({ force: true });
-  await saveApiData();
+  await conn.sync({ force: true });
   console.log("Server raised in port: " + PORT);
 });
+
+//{ force: true } DROP (delete) a todas las tablas y vuelve a crear
+//{ force: false } mantiene todo igual y persistente
+//{ alter: true } actualiza y no perdemos datos se utiliza muy poco
+//sequelize.define() toma un obj y lo convierte en tabla
+//sequelize.sync levanta la Db
